@@ -10,5 +10,5 @@
 
 | Topic            | Problem Link                                                        | Solution                                                            |
 | ---------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| Set Matrix Zeros | <a href="https://leetcode.com/problems/set-matrix-zeroes/">here</a> | <a href="https://leetcode.com/problems/set-matrix-zeroes/">here</a> |
-| Pascal Triangle  | <a href="https://leetcode.com/problems/pascals-triangle/">here</a>  | <a href="https://leetcode.com/problems/set-matrix-zeroes/">here</a> |
+| Set Matrix Zeros | <a href="https://leetcode.com/problems/set-matrix-zeroes/">here</a> | <a href="https://github.com/sonishreyas/DSA-JS/blob/main/Array/set-matrix-zeroes.js">here</a> |
+| Pascal Triangle  | <a href="https://leetcode.com/problems/pascals-triangle/">here</a>  | <a href="https://github.com/sonishreyas/DSA-JS/blob/main/Array/pascal-triangle.js">here</a> |
