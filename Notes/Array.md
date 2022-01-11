@@ -84,3 +84,42 @@ var setZeroes = (matrix) => {
 ```
 #
 ### Pascal Triangle 
+
+#
+### Next Permutation 
+
+#### Ques: Implement next permutation, which rearranges numbers into the lexicographically next greater permutation of numbers.
+If such an arrangement is impossible, it must rearrange it to the lowest possible order (i.e., sorted in ascending order).
+The replacement must be in place and use only constant extra memory.
+```
+Example 1:
+Input: nums = [1,2,3]
+Output: [1,3,2]
+```
+```
+Example 2:
+Input: nums = [3,2,1]
+Output: [1,2,3]
+```
+```
+Example 3:
+Input: nums = [1,1,5]
+Output: [1,5,1]
+```
+#### Solution:
+* Brute Force: 
+    - In c++ we have a next_permutation function which can be used.
+    - We calculate all the permutations and then return the index of the required permutation
+* Optimized Approach
+    - Traverse the array from back and find an element such that a[i]<a[i+1] and that will be index 1.
+    - Again do a traversal from the back and find an index whose values is greater that at index 1, a[index 2] > a[index 1]
+    - Swap values at index 1 and index 2.
+    - Reverse everything from right of index 1.
+    ```
+    - EX: 1,3,5,4,2 -> 1,4,2,3,5
+    - First step index 1 = 1 
+    - Second step index 2 = 3
+    - Third step swap values so array = 1,4,5,3,2
+    - Fourth step reverse everything on right of index 1, so array = 1,4,2,3,5 which is the desired result.  
+    ```
+    
