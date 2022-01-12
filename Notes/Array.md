@@ -122,4 +122,33 @@ Output: [1,5,1]
     - Third step swap values so array = 1,4,5,3,2
     - Fourth step reverse everything on right of index 1, so array = 1,4,2,3,5 which is the desired result.  
     ```
-    
+```jsx
+/**
+ * @param {number[]} nums
+ * @return {void} Do not return anything, modify nums in-place instead.
+ */
+var nextPermutation = (nums) => {
+    let i = nums.length - 2;
+    while(i>=0 && nums[i] >= nums[i+1]) i-=1;
+    if(i>=0)    {
+        let j = nums.length - 1;
+        while(nums[j] <= nums[i])   j-=1;
+        swap(nums,i,j);
+    }
+    reverse(nums,i+1,nums.length-1);
+};
+
+const swap = (nums,i,j) => {
+    const tmp = nums[i];
+    nums[i] = nums[j];
+    nums[j] = tmp;
+}
+
+const reverse = (nums,i,j) => {
+    while(i < j)    {
+        swap(nums,i,j);
+        i+=1;
+        j-=1;
+    }
+}
+```
