@@ -357,3 +357,81 @@ const swap = (nums, i, j) => {
   nums[j] = tmp;
 };
 ```
+
+#
+
+### Best Time to Buy and Sell Stock
+
+#### Ques: You are given an array prices where prices[i] is the price of a given stock on the ith day.
+
+You want to maximize your profit by choosing a single day to buy one stock and choosing a different day in the future to sell that stock.
+Return the maximum profit you can achieve from this transaction. If you cannot achieve any profit, return 0.
+
+```
+Example 1:
+Input: prices = [7,1,5,3,6,4]
+Output: 5
+Explanation: Buy on day 2 (price = 1) and sell on day 5 (price = 6), profit = 6-1 = 5.
+Note that buying on day 2 and selling on day 1 is not allowed because you must buy before you sell.
+```
+
+```
+Example 2:
+Input: prices = [7,6,4,3,1]
+Output: 0
+Explanation: In this case, no transactions are done and the max profit = 0.
+```
+
+- Brute Force
+  - Starting from 1st index and check the max of each element from i+1 to n-1.
+  - take the diff of the max and the element at ith position and continue till i<n;
+  - TC: O(n^2)
+  - SC: O(1)
+
+```jsx
+const maxProfit = (prices) => {
+  let n = prices.length;
+  let maxx = 0;
+  let m = 0;
+  for (let i = 0; i < n - 1; i++) {
+    m = getMax(prices, i + 1, n - 1);
+    if (m >= prices[i]) {
+      maxx = Math.max(maxx, m - prices[i]);
+    }
+  }
+  return maxx;
+};
+
+const getMax = (prices, i, j) => {
+  let m = prices[i];
+  for (let k = i + 1; k <= j; k++) {
+    m = Math.max(m, prices[k]);
+  }
+  return m;
+};
+```
+
+- Optimized Approach
+  - Intuition: We will linearly travel the array. We can maintain a minimum from the starting of the array and compare it with every element of the array, if it is greater than the minimum then take the difference and maintain it in max, otherwise update the minimum.
+  - Create a variable maxPro and mark it as 0.
+  - Create a variable minPrice and mark it as max_value.
+  - Run a for loop from 0 to n.
+  - Update the minPrice at if it greater than current element of the array
+  - Take the difference of the minPrice with the current element of the array and compare and maintain it in maxPro.
+  - Return the maxPro.
+  - Time complexity: O(n)
+  - Space Complexity: O(1)
+
+```jsx
+const maxProfit = (prices) => {
+  let min_price = Math.max(...prices);
+  let max_profit = 0;
+  for (let i = 0; i < prices.length; i++) {
+    min_price = Math.min(min_price, prices[i]);
+    max_profit = Math.max(max_profit, prices[i] - min_price);
+  }
+  return max_profit;
+};
+```
+
+#
