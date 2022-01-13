@@ -8,9 +8,10 @@
 
 ### Arrays
 
-| Topic              | Problem Link                                                        | Solution                                                                                      |
-| ------------------ | ------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
-| Set Matrix Zeros   | <a href="https://leetcode.com/problems/set-matrix-zeroes/">here</a> | <a href="https://github.com/sonishreyas/DSA-JS/blob/main/Array/set-matrix-zeroes.js">here</a> |
-| Pascal Triangle    | <a href="https://leetcode.com/problems/pascals-triangle/">here</a>  | <a href="https://github.com/sonishreyas/DSA-JS/blob/main/Array/pascal-triangle.js">here</a>   |
-| Next Permutation   | <a href="https://leetcode.com/problems/next-permutation/">here</a>  | <a href="https://github.com/sonishreyas/DSA-JS/blob/main/Array/next-permutation.js">here</a>  |
-| Kadane’s Algorithm | <a href="https://leetcode.com/problems/maximum-subarray/">here</a>  | <a href="https://github.com/sonishreyas/DSA-JS/blob/main/Array/kadanes-algorithm.js">here</a> |
+| Topic                        | Problem Link                                                        | Solution                                                                                      |
+| ---------------------------- | ------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| Set Matrix Zeros             | <a href="https://leetcode.com/problems/set-matrix-zeroes/">here</a> | <a href="https://github.com/sonishreyas/DSA-JS/blob/main/Array/set-matrix-zeroes.js">here</a> |
+| Pascal Triangle              | <a href="https://leetcode.com/problems/pascals-triangle/">here</a>  | <a href="https://github.com/sonishreyas/DSA-JS/blob/main/Array/pascal-triangle.js">here</a>   |
+| Next Permutation             | <a href="https://leetcode.com/problems/next-permutation/">here</a>  | <a href="https://github.com/sonishreyas/DSA-JS/blob/main/Array/next-permutation.js">here</a>  |
+| Kadane’s Algorithm           | <a href="https://leetcode.com/problems/maximum-subarray/">here</a>  | <a href="https://github.com/sonishreyas/DSA-JS/blob/main/Array/kadanes-algorithm.js">here</a> |
+| Sort an array of 0’s 1’s 2’s | <a href="https://leetcode.com/problems/sort-colors/">here</a>       | <a href="https://github.com/sonishreyas/DSA-JS/blob/main/Array/sort-array-of-012.js">here</a> |

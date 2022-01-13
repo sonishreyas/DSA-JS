@@ -111,8 +111,7 @@ Input: numRows = 1
 Output: [[1]]
 ```
 
-- Brute Force:
-  -
+- ## Brute Force:
 - Optimized Approach
   - create a new array of size numrows.
   - traverse from 0 to numrows-1.
@@ -217,11 +216,12 @@ const reverse = (nums, i, j) => {
 
 #### Ques: Ques: Maximum Subarray - Given an integer array nums, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum.
 
+```
 Example 1:
-
 Input: nums = [-2,1,-3,4,-1,2,1,-5,4]
 Output: 6
 Explanation: [4,-1,2,1] has the largest sum = 6.
+```
 
 #### Solution:
 
@@ -265,5 +265,95 @@ const maxSubArray = (nums) => {
     }
   }
   return maxx;
+};
+```
+
+#
+
+### Sort an array of 0’s 1’s 2’s
+
+#### Ques: Given an array nums with n objects colored red, white, or blue, sort them in-place so that objects of the same color are adjacent, with the colors in the order red, white, and blue.
+
+We will use the integers 0, 1, and 2 to represent the color red, white, and blue, respectively.
+You must solve this problem without using the library's sort function.
+
+```
+Example 1:
+Input: nums = [2,0,2,1,1,0]
+Output: [0,0,1,1,2,2]
+```
+
+```
+Example 2:
+Input: nums = [2,0,1]
+Output: [0,1,2]
+```
+
+#### Solution:
+
+- Approach-1: Sorting ( even if it is not the expected solution here but it can be considered as one of the approach ). Since the array contains only 3 integers, 0, 1, and 2. Simply sorting the array would arrange the elements in increasing order.
+  - Time Complexity: O(N\*logN)
+  - Space Complexity: O(1)
+- Approach-2: Keeping count of values
+  - Intuition: Since in this case there are only 3 distinct values in the array so it’s easy to maintain the count of all, Like the count of 0, 1, and 2. This can be followed by overwriting the array based on the frequency(count) of the values.
+  - Take 3 variables to maintain the count of 0, 1 and 2.
+  - Travel the array once and increment the corresponding counting variables( let’s consider count_0 = a, count_1 = b, count_2 = c )
+  - In 2nd traversal of array, we will now over write the first ‘a’ indices / positions in array with ’0’, the next ‘b’ with ‘1’ and the remaining ‘c’ with ‘2’.
+  - Time Complexity: O(N) + O(N)
+  - Space Complexity: O(1)
+- Approach 3 (Optimized): 3-Pointer approach
+
+  - This problem is a variation of the popular Dutch National flag algorithm
+  - Intuition: In this approach, we will be using 3 pointers named low, mid, and high. We will be using these 3 pointers to move around the values. The primary goal here is to move 0s to the left and 2s to the right of the array and at the same time all the 1s shall be in the middle region of the array and hence the array will be sorted.
+  - Initialize the 3 pointers such that low and mid will point to 0th index and high pointer will point to last index
+    ```
+    int low = arr[0]
+    int mid = arr[0]
+    int high = arr[n – 1]
+    ```
+  - Now there will 3 different operations / steps based on the value of arr[mid] and will be repeated until mid <= high.
+
+  ```
+  arr[mid] == 0:
+  swap(arr[low], arr[mid])
+  low++, mid++
+
+  arr[mid] == 1:
+  mid++
+
+  arr[mid] == 2:
+  swap(arr[mid], arr[high])
+  high–;
+  ```
+
+  - The array formed after these steps will be a sorted array.
+
+```jsx
+/**
+ * @param {number[]} nums
+ * @return {void} Do not return anything, modify nums in-place instead.
+ */
+const sortColors = (nums) => {
+  let low = 0;
+  let mid = 0;
+  let high = nums.length - 1;
+  while (mid <= high) {
+    if (nums[mid] === 0) {
+      swap(nums, mid, low);
+      low += 1;
+      mid += 1;
+    } else if (nums[mid] === 1) {
+      mid++;
+    } else {
+      swap(nums, mid, high);
+      high--;
+    }
+  }
+};
+
+const swap = (nums, i, j) => {
+  let tmp = nums[i];
+  nums[i] = nums[j];
+  nums[j] = tmp;
 };
 ```
