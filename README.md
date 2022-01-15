@@ -16,3 +16,4 @@
 | Kadane’s Algorithm           | <a href="https://leetcode.com/problems/maximum-subarray/">here</a>                | <a href="https://github.com/sonishreyas/DSA-JS/blob/main/Array/kadanes-algorithm.js">here</a>  |
 | Sort an array of 0’s 1’s 2’s | <a href="https://leetcode.com/problems/sort-colors/">here</a>                     | <a href="https://github.com/sonishreyas/DSA-JS/blob/main/Array/sort-array-of-012.js">here</a>  |
 | Stock Buy and Sell           | <a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock/">here</a> | <a href="https://github.com/sonishreyas/DSA-JS/blob/main/Array/stock-buy-and-cell.js">here</a> |
+| Rotate Matrix                | <a href="https://leetcode.com/problems/rotate-image/">here</a>                    | <a href="https://github.com/sonishreyas/DSA-JS/blob/main/Array/rotate-matrix.js">here</a>      |

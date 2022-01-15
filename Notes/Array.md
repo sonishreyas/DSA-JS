@@ -68,26 +68,26 @@ class Solution:
  * @return {void} Do not return anything, modify matrix in-place instead.
  */
 var setZeroes = (matrix) => {
-  let col0 = 1;
-  const rows = matrix.length;
-  const cols = matrix[0].length;
-  for (let i = 0; i < rows; i++) {
-    if (matrix[i][0] === 0) col0 = 0;
-    for (let j = 1; j < cols; j++) {
-      if (matrix[i][j] === 0) {
-        matrix[i][0] = matrix[0][j] = 0;
-      }
-    }
-  }
+	let col0 = 1;
+	const rows = matrix.length;
+	const cols = matrix[0].length;
+	for (let i = 0; i < rows; i++) {
+		if (matrix[i][0] === 0) col0 = 0;
+		for (let j = 1; j < cols; j++) {
+			if (matrix[i][j] === 0) {
+				matrix[i][0] = matrix[0][j] = 0;
+			}
+		}
+	}
 
-  for (let i = rows - 1; i >= 0; i--) {
-    for (let j = cols - 1; j >= 1; j--) {
-      if (matrix[i][0] === 0 || matrix[0][j] === 0) {
-        matrix[i][j] = 0;
-      }
-    }
-    if (col0 === 0) matrix[i][0] = 0;
-  }
+	for (let i = rows - 1; i >= 0; i--) {
+		for (let j = cols - 1; j >= 1; j--) {
+			if (matrix[i][0] === 0 || matrix[0][j] === 0) {
+				matrix[i][j] = 0;
+			}
+		}
+		if (col0 === 0) matrix[i][0] = 0;
+	}
 };
 ```
 
@@ -121,16 +121,16 @@ Output: [[1]]
 
 ```jsx
 var generate = function (numRows) {
-  let number = new Array(numRows);
-  for (let i = 0; i < numRows; i++) {
-    number[i] = new Array(i + 1);
-    number[i][0] = number[i][i] = 1;
+	let number = new Array(numRows);
+	for (let i = 0; i < numRows; i++) {
+		number[i] = new Array(i + 1);
+		number[i][0] = number[i][i] = 1;
 
-    for (let j = 1; j < i; j++) {
-      number[i][j] = number[i - 1][j] + number[i - 1][j - 1];
-    }
-  }
-  return number;
+		for (let j = 1; j < i; j++) {
+			number[i][j] = number[i - 1][j] + number[i - 1][j - 1];
+		}
+	}
+	return number;
 };
 ```
 
@@ -185,28 +185,28 @@ Output: [1,5,1]
  * @return {void} Do not return anything, modify nums in-place instead.
  */
 var nextPermutation = (nums) => {
-  let i = nums.length - 2;
-  while (i >= 0 && nums[i] >= nums[i + 1]) i -= 1;
-  if (i >= 0) {
-    let j = nums.length - 1;
-    while (nums[j] <= nums[i]) j -= 1;
-    swap(nums, i, j);
-  }
-  reverse(nums, i + 1, nums.length - 1);
+	let i = nums.length - 2;
+	while (i >= 0 && nums[i] >= nums[i + 1]) i -= 1;
+	if (i >= 0) {
+		let j = nums.length - 1;
+		while (nums[j] <= nums[i]) j -= 1;
+		swap(nums, i, j);
+	}
+	reverse(nums, i + 1, nums.length - 1);
 };
 
 const swap = (nums, i, j) => {
-  const tmp = nums[i];
-  nums[i] = nums[j];
-  nums[j] = tmp;
+	const tmp = nums[i];
+	nums[i] = nums[j];
+	nums[j] = tmp;
 };
 
 const reverse = (nums, i, j) => {
-  while (i < j) {
-    swap(nums, i, j);
-    i += 1;
-    j -= 1;
-  }
+	while (i < j) {
+		swap(nums, i, j);
+		i += 1;
+		j -= 1;
+	}
 };
 ```
 
@@ -255,16 +255,16 @@ for i in range(n):
 
 ```jsx
 const maxSubArray = (nums) => {
-  let sum = 0;
-  let maxx = nums[0];
-  for (let i = 0; i < nums.length; i++) {
-    sum += nums[i];
-    maxx = Math.max(sum, maxx);
-    if (sum < 0) {
-      sum = 0;
-    }
-  }
-  return maxx;
+	let sum = 0;
+	let maxx = nums[0];
+	for (let i = 0; i < nums.length; i++) {
+		sum += nums[i];
+		maxx = Math.max(sum, maxx);
+		if (sum < 0) {
+			sum = 0;
+		}
+	}
+	return maxx;
 };
 ```
 
@@ -334,27 +334,27 @@ Output: [0,1,2]
  * @return {void} Do not return anything, modify nums in-place instead.
  */
 const sortColors = (nums) => {
-  let low = 0;
-  let mid = 0;
-  let high = nums.length - 1;
-  while (mid <= high) {
-    if (nums[mid] === 0) {
-      swap(nums, mid, low);
-      low += 1;
-      mid += 1;
-    } else if (nums[mid] === 1) {
-      mid++;
-    } else {
-      swap(nums, mid, high);
-      high--;
-    }
-  }
+	let low = 0;
+	let mid = 0;
+	let high = nums.length - 1;
+	while (mid <= high) {
+		if (nums[mid] === 0) {
+			swap(nums, mid, low);
+			low += 1;
+			mid += 1;
+		} else if (nums[mid] === 1) {
+			mid++;
+		} else {
+			swap(nums, mid, high);
+			high--;
+		}
+	}
 };
 
 const swap = (nums, i, j) => {
-  let tmp = nums[i];
-  nums[i] = nums[j];
-  nums[j] = tmp;
+	let tmp = nums[i];
+	nums[i] = nums[j];
+	nums[j] = tmp;
 };
 ```
 
@@ -382,6 +382,8 @@ Output: 0
 Explanation: In this case, no transactions are done and the max profit = 0.
 ```
 
+#### Solution:
+
 - Brute Force
   - Starting from 1st index and check the max of each element from i+1 to n-1.
   - take the diff of the max and the element at ith position and continue till i<n;
@@ -390,24 +392,24 @@ Explanation: In this case, no transactions are done and the max profit = 0.
 
 ```jsx
 const maxProfit = (prices) => {
-  let n = prices.length;
-  let maxx = 0;
-  let m = 0;
-  for (let i = 0; i < n - 1; i++) {
-    m = getMax(prices, i + 1, n - 1);
-    if (m >= prices[i]) {
-      maxx = Math.max(maxx, m - prices[i]);
-    }
-  }
-  return maxx;
+	let n = prices.length;
+	let maxx = 0;
+	let m = 0;
+	for (let i = 0; i < n - 1; i++) {
+		m = getMax(prices, i + 1, n - 1);
+		if (m >= prices[i]) {
+			maxx = Math.max(maxx, m - prices[i]);
+		}
+	}
+	return maxx;
 };
 
 const getMax = (prices, i, j) => {
-  let m = prices[i];
-  for (let k = i + 1; k <= j; k++) {
-    m = Math.max(m, prices[k]);
-  }
-  return m;
+	let m = prices[i];
+	for (let k = i + 1; k <= j; k++) {
+		m = Math.max(m, prices[k]);
+	}
+	return m;
 };
 ```
 
@@ -424,14 +426,95 @@ const getMax = (prices, i, j) => {
 
 ```jsx
 const maxProfit = (prices) => {
-  let min_price = Math.max(...prices);
-  let max_profit = 0;
-  for (let i = 0; i < prices.length; i++) {
-    min_price = Math.min(min_price, prices[i]);
-    max_profit = Math.max(max_profit, prices[i] - min_price);
-  }
-  return max_profit;
+	let min_price = Math.max(...prices);
+	let max_profit = 0;
+	for (let i = 0; i < prices.length; i++) {
+		min_price = Math.min(min_price, prices[i]);
+		max_profit = Math.max(max_profit, prices[i] - min_price);
+	}
+	return max_profit;
 };
 ```
 
 #
+
+### Rotate Matrix
+
+#### Ques: You are given an n x n 2D matrix representing an image, rotate the image by 90 degrees (clockwise).
+
+You have to rotate the image in-place, which means you have to modify the input 2D matrix directly. DO NOT allocate another 2D matrix and do the rotation.
+
+```
+Example 1:
+Input: matrix = [[1,2,3],[4,5,6],[7,8,9]]
+Output: [[7,4,1],[8,5,2],[9,6,3]]
+```
+
+```
+Example 2:
+Input: matrix = [[5,1,9,11],[2,4,8,10],[13,3,6,7],[15,14,12,16]]
+Output: [[15,13,2,5],[14,3,4,1],[12,6,8,9],[16,7,10,11]]
+```
+
+#### Solution:
+
+- Brute force
+  - Take another dummy matrix of n\*n, and then take the first row of the matrix and put it in the last column of the dummy matrix, take the second row of the matrix, and put it in the second last column of the matrix and so.
+  - Time Complexity: O(N\*N) to linearly iterate and put it into some other matrix.
+  - Space Complexity: O(N\*N) to copy it into some other matrix.
+
+```jsx
+#include<bits/stdc++.h>
+
+using namespace std;
+vector < vector < int >> rotate(vector < vector < int >> & matrix) {
+  int n = matrix.size();
+  vector < vector < int >> rotated(n, vector < int > (n, 0));
+  for (int i = 0; i < n; i++) {
+    for (int j = 0; j < n; j++) {
+      rotated[j][n - i - 1] = matrix[i][j];
+    }
+  }
+  return rotated;
+}
+
+int main() {
+  vector < vector < int >> arr;
+  arr =  {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
+  vector < vector < int >> rotated = rotate(arr);
+  cout << "Rotated Image" << endl;
+  for (int i = 0; i < rotated.size(); i++) {
+    for (int j = 0; j < rotated[0].size(); j++) {
+      cout << rotated[i][j] << " ";
+    }
+    cout << "\n";
+  }
+
+}
+```
+
+- Optimized Approach
+  - Intuition: By observation, we see that the first column of the original matrix is the reverse of the first row of the rotated matrix, so that’s why we transpose the matrix and then reverse each row, and since we are making changes in the matrix itself space complexity gets reduced to O(1).
+  - Step1: Transpose of the matrix. (transposing means changing columns to rows and rows to columns)
+  - Step2: Reverse each row of the matrix.
+
+```jsx
+const rotate = (matrix) => {
+	let rows = matrix.length;
+	let columns = matrix[0].length;
+	for (let i = 0; i < rows; i++) {
+		for (let j = 0; j < i; j++) {
+			[matrix[i][j], matrix[j][i]] = [matrix[j][i], matrix[i][j]];
+		}
+	}
+
+	for (let i = 0; i < rows; i++) {
+		for (let j = 0; j < columns / 2; j++) {
+			[matrix[i][j], matrix[i][columns - 1 - j]] = [
+				matrix[i][columns - 1 - j],
+				matrix[i][j],
+			];
+		}
+	}
+};
+```
