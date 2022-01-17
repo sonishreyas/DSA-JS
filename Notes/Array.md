@@ -710,3 +710,67 @@ const merge = (nums1, m, nums2, n) => {
 	return nums1;
 };
 ```
+
+#
+
+### Find the duplicate in an array of N+1 integers.
+
+#### Ques: You are given two integer arrays nums1 and nums2, sorted in non-decreasing order, and two integers m and n, representing the number of elements in nums1 and nums2 respectively.
+
+Given an array of integers nums containing n + 1 integers where each integer is in the range [1, n] inclusive.
+There is only one repeated number in nums, return this repeated number.
+You must solve the problem without modifying the array nums and uses only constant extra space.
+
+```
+Example 1:
+Input: nums = [1,3,4,2,2]
+Output: 2
+```
+
+```
+Example 2:
+Input: nums = [3,1,3,4,2]
+Output: 3
+```
+
+#### Solution:
+
+- Using sorting
+
+  - Sort the array. After that, if there is any duplicate number they will be adjacent.So we simply have to check if arr[i]==arr[i+1] and if it is true,arr[i] is the duplicate number.
+  - Time Complexity:O(Nlogn + N) : NlogN for sorting the array and O(N) for traversing through the array and checking if adjacent elements are equal or not. But this will distort the array.
+  - Space Complexity:O(1)
+
+- Using frequency array
+
+  - Take a frequency array of size N+1 and initialize it to 0. Now traverse through the array and if the frequency of the element is 0 increase it by 1, else if the frequency is not 0 then that element is the required answer.
+  - Time Complexity: O(N), as we are traversing through the array only once.
+  - Space Complexity: O(N), as we are using extra space for frequency array.
+
+- Linked List cycle method(Optimized Approach)
+  - Intution
+    - Since there is a duplicate number, we can always say that cycle will be formed.
+    - We form a cycle, we start with index 0 and next vertice will be nums[0] and then the next vertice will be nums[nums[0]].
+  - Algo
+    - The slow pointer moves by one step and the fast pointer moves by 2 steps and there exists a cycle so the first collision is bound to happen.
+    - Let’s assume the distance between the first element and the first collision is a. So slow pointer has traveled a distance while fast(since moving 2 steps at a time) has traveled 2a distance. For slow and a fast pointer to collide 2a-a=a should be multiple of the length of cycle, Now we place a fast pointer to start. Assume the distance between the start and duplicate to be x. So now the distance between slow and duplicate shows also be x, as seen from the diagram, and so now fast and slow pointer both should move by one step.
+  - Time complexity: O(N). Since we traversed through the array only once.
+  - Space complexity: O(1).
+
+```jsx
+const findDuplicate = (nums) => {
+	let slow = nums[0];
+	let fast = nums[0];
+	do {
+		slow = nums[slow];
+		fast = nums[nums[fast]];
+	} while (slow != fast);
+
+	fast = nums[0];
+	while (slow != fast) {
+		slow = nums[slow];
+		fast = nums[fast];
+	}
+	return slow;
+};
+```
