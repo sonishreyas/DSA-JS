@@ -625,3 +625,88 @@ const merge = (intervals) => {
 	return intervals;
 };
 ```
+
+#
+
+### Merge two sorted Arrays without extra space
+
+#### Ques: You are given two integer arrays nums1 and nums2, sorted in non-decreasing order, and two integers m and n, representing the number of elements in nums1 and nums2 respectively.
+
+Merge nums1 and nums2 into a single array sorted in non-decreasing order.
+The final sorted array should not be returned by the function, but instead be stored inside the array nums1. To accommodate this, nums1 has a length of m + n, where the first m elements denote the elements that should be merged, and the last n elements are set to 0 and should be ignored. nums2 has a length of n.
+
+```
+Example 1:
+Input: nums1 = [1,2,3,0,0,0], m = 3, nums2 = [2,5,6], n = 3
+Output: [1,2,2,3,5,6]
+Explanation: The arrays we are merging are [1,2,3] and [2,5,6].
+The result of the merge is [1,2,2,3,5,6] with the underlined elements coming from nums1.
+```
+
+```
+Example 2:
+Input: nums1 = [1], m = 1, nums2 = [], n = 0
+Output: [1]
+Explanation: The arrays we are merging are [1] and [].
+The result of the merge is [1].
+```
+
+#### Solution:
+
+- Brute Force
+
+  - Intuition: We can use a new array of size n+m and put all elements of arr1 and arr2 in it, and sort it. After sorting it, but all the elements in arr1 and arr2.
+  - Make an arr3 of size n+m.
+  - Put elements arr1 and arr2 in arr3.
+  - Sort the arr3.
+  - Now first fill the arr1 and then fill remaining elements in arr2.
+  - Time complexity: O(n\*log(n))+O(n)+O(n)
+  - Space Complexity: O(n)
+
+- Without using space
+
+  - Intuition: We can think of Iterating in arr1 and whenever we encounter an element that is greater than the first element of arr2, just swap it. Now rearrange the arr2 in a sorted manner, after completion of the loop we will get elements of both the arrays in non-decreasing order.
+  - Use a for loop in arr1.
+  - Whenever we get any element in arr1 which is greater than the first element of arr2,swap it.
+  - Rearrange arr2.
+  - Repeat the process.
+  - Time complexity: O(n\*m)
+  - Space Complexity: O(1)
+
+- Gap method-
+  - Initially take the gap as (m+n)/2;
+  - Take as a pointer1 = 0 and pointer2 = gap.
+  - Run a oop from pointer1 & pointer2 to m+n and whenever arr[pointer2]<arr[pointer1], just swap those.
+  - After completion of the loop reduce the gap as gap=gap/2.
+  - Repeat the process until gap>0.
+  - Time complexity: O(logn)
+  - Space Complexity: O(1)
+
+```jsx
+const merge = (nums1, m, nums2, n) => {
+	let gap = Math.ceil((m + n) / 2);
+	let i;
+	let j;
+	while (gap > 0) {
+		i = 0;
+		j = gap;
+		while (j < n + m) {
+			if (j < m && nums1[i] > nums1[j]) {
+				[nums1[i], nums1[j]] = [nums1[j], nums1[i]];
+			} else if (j >= m && i < m && nums1[i] > nums2[j - m]) {
+				[nums1[i], nums2[j - m]] = [nums2[j - m], nums1[i]];
+			} else if (j >= m && i >= m && nums2[i - m] > nums2[j - m]) {
+				[nums2[i - m], nums2[j - m]] = [nums2[j - m], nums2[i - m]];
+			}
+			j += 1;
+			i += 1;
+		}
+		if (gap === 1) gap = 0;
+		else gap = Math.ceil(gap / 2);
+	}
+	for (let i = 0; i < n; i++) {
+		nums1[m + i] = nums2[i];
+	}
+	return nums1;
+};
+```
