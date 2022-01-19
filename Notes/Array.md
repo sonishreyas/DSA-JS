@@ -68,26 +68,26 @@ class Solution:
  * @return {void} Do not return anything, modify matrix in-place instead.
  */
 var setZeroes = (matrix) => {
-	let col0 = 1;
-	const rows = matrix.length;
-	const cols = matrix[0].length;
-	for (let i = 0; i < rows; i++) {
-		if (matrix[i][0] === 0) col0 = 0;
-		for (let j = 1; j < cols; j++) {
-			if (matrix[i][j] === 0) {
-				matrix[i][0] = matrix[0][j] = 0;
-			}
-		}
-	}
+  let col0 = 1;
+  const rows = matrix.length;
+  const cols = matrix[0].length;
+  for (let i = 0; i < rows; i++) {
+    if (matrix[i][0] === 0) col0 = 0;
+    for (let j = 1; j < cols; j++) {
+      if (matrix[i][j] === 0) {
+        matrix[i][0] = matrix[0][j] = 0;
+      }
+    }
+  }
 
-	for (let i = rows - 1; i >= 0; i--) {
-		for (let j = cols - 1; j >= 1; j--) {
-			if (matrix[i][0] === 0 || matrix[0][j] === 0) {
-				matrix[i][j] = 0;
-			}
-		}
-		if (col0 === 0) matrix[i][0] = 0;
-	}
+  for (let i = rows - 1; i >= 0; i--) {
+    for (let j = cols - 1; j >= 1; j--) {
+      if (matrix[i][0] === 0 || matrix[0][j] === 0) {
+        matrix[i][j] = 0;
+      }
+    }
+    if (col0 === 0) matrix[i][0] = 0;
+  }
 };
 ```
 
@@ -121,16 +121,16 @@ Output: [[1]]
 
 ```jsx
 var generate = function (numRows) {
-	let number = new Array(numRows);
-	for (let i = 0; i < numRows; i++) {
-		number[i] = new Array(i + 1);
-		number[i][0] = number[i][i] = 1;
+  let number = new Array(numRows);
+  for (let i = 0; i < numRows; i++) {
+    number[i] = new Array(i + 1);
+    number[i][0] = number[i][i] = 1;
 
-		for (let j = 1; j < i; j++) {
-			number[i][j] = number[i - 1][j] + number[i - 1][j - 1];
-		}
-	}
-	return number;
+    for (let j = 1; j < i; j++) {
+      number[i][j] = number[i - 1][j] + number[i - 1][j - 1];
+    }
+  }
+  return number;
 };
 ```
 
@@ -185,28 +185,28 @@ Output: [1,5,1]
  * @return {void} Do not return anything, modify nums in-place instead.
  */
 var nextPermutation = (nums) => {
-	let i = nums.length - 2;
-	while (i >= 0 && nums[i] >= nums[i + 1]) i -= 1;
-	if (i >= 0) {
-		let j = nums.length - 1;
-		while (nums[j] <= nums[i]) j -= 1;
-		swap(nums, i, j);
-	}
-	reverse(nums, i + 1, nums.length - 1);
+  let i = nums.length - 2;
+  while (i >= 0 && nums[i] >= nums[i + 1]) i -= 1;
+  if (i >= 0) {
+    let j = nums.length - 1;
+    while (nums[j] <= nums[i]) j -= 1;
+    swap(nums, i, j);
+  }
+  reverse(nums, i + 1, nums.length - 1);
 };
 
 const swap = (nums, i, j) => {
-	const tmp = nums[i];
-	nums[i] = nums[j];
-	nums[j] = tmp;
+  const tmp = nums[i];
+  nums[i] = nums[j];
+  nums[j] = tmp;
 };
 
 const reverse = (nums, i, j) => {
-	while (i < j) {
-		swap(nums, i, j);
-		i += 1;
-		j -= 1;
-	}
+  while (i < j) {
+    swap(nums, i, j);
+    i += 1;
+    j -= 1;
+  }
 };
 ```
 
@@ -255,16 +255,16 @@ for i in range(n):
 
 ```jsx
 const maxSubArray = (nums) => {
-	let sum = 0;
-	let maxx = nums[0];
-	for (let i = 0; i < nums.length; i++) {
-		sum += nums[i];
-		maxx = Math.max(sum, maxx);
-		if (sum < 0) {
-			sum = 0;
-		}
-	}
-	return maxx;
+  let sum = 0;
+  let maxx = nums[0];
+  for (let i = 0; i < nums.length; i++) {
+    sum += nums[i];
+    maxx = Math.max(sum, maxx);
+    if (sum < 0) {
+      sum = 0;
+    }
+  }
+  return maxx;
 };
 ```
 
@@ -334,27 +334,27 @@ Output: [0,1,2]
  * @return {void} Do not return anything, modify nums in-place instead.
  */
 const sortColors = (nums) => {
-	let low = 0;
-	let mid = 0;
-	let high = nums.length - 1;
-	while (mid <= high) {
-		if (nums[mid] === 0) {
-			swap(nums, mid, low);
-			low += 1;
-			mid += 1;
-		} else if (nums[mid] === 1) {
-			mid++;
-		} else {
-			swap(nums, mid, high);
-			high--;
-		}
-	}
+  let low = 0;
+  let mid = 0;
+  let high = nums.length - 1;
+  while (mid <= high) {
+    if (nums[mid] === 0) {
+      swap(nums, mid, low);
+      low += 1;
+      mid += 1;
+    } else if (nums[mid] === 1) {
+      mid++;
+    } else {
+      swap(nums, mid, high);
+      high--;
+    }
+  }
 };
 
 const swap = (nums, i, j) => {
-	let tmp = nums[i];
-	nums[i] = nums[j];
-	nums[j] = tmp;
+  let tmp = nums[i];
+  nums[i] = nums[j];
+  nums[j] = tmp;
 };
 ```
 
@@ -392,24 +392,24 @@ Explanation: In this case, no transactions are done and the max profit = 0.
 
 ```jsx
 const maxProfit = (prices) => {
-	let n = prices.length;
-	let maxx = 0;
-	let m = 0;
-	for (let i = 0; i < n - 1; i++) {
-		m = getMax(prices, i + 1, n - 1);
-		if (m >= prices[i]) {
-			maxx = Math.max(maxx, m - prices[i]);
-		}
-	}
-	return maxx;
+  let n = prices.length;
+  let maxx = 0;
+  let m = 0;
+  for (let i = 0; i < n - 1; i++) {
+    m = getMax(prices, i + 1, n - 1);
+    if (m >= prices[i]) {
+      maxx = Math.max(maxx, m - prices[i]);
+    }
+  }
+  return maxx;
 };
 
 const getMax = (prices, i, j) => {
-	let m = prices[i];
-	for (let k = i + 1; k <= j; k++) {
-		m = Math.max(m, prices[k]);
-	}
-	return m;
+  let m = prices[i];
+  for (let k = i + 1; k <= j; k++) {
+    m = Math.max(m, prices[k]);
+  }
+  return m;
 };
 ```
 
@@ -426,13 +426,13 @@ const getMax = (prices, i, j) => {
 
 ```jsx
 const maxProfit = (prices) => {
-	let min_price = Math.max(...prices);
-	let max_profit = 0;
-	for (let i = 0; i < prices.length; i++) {
-		min_price = Math.min(min_price, prices[i]);
-		max_profit = Math.max(max_profit, prices[i] - min_price);
-	}
-	return max_profit;
+  let min_price = Math.max(...prices);
+  let max_profit = 0;
+  for (let i = 0; i < prices.length; i++) {
+    min_price = Math.min(min_price, prices[i]);
+    max_profit = Math.max(max_profit, prices[i] - min_price);
+  }
+  return max_profit;
 };
 ```
 
@@ -500,22 +500,22 @@ int main() {
 
 ```jsx
 const rotate = (matrix) => {
-	let rows = matrix.length;
-	let columns = matrix[0].length;
-	for (let i = 0; i < rows; i++) {
-		for (let j = 0; j < i; j++) {
-			[matrix[i][j], matrix[j][i]] = [matrix[j][i], matrix[i][j]];
-		}
-	}
+  let rows = matrix.length;
+  let columns = matrix[0].length;
+  for (let i = 0; i < rows; i++) {
+    for (let j = 0; j < i; j++) {
+      [matrix[i][j], matrix[j][i]] = [matrix[j][i], matrix[i][j]];
+    }
+  }
 
-	for (let i = 0; i < rows; i++) {
-		for (let j = 0; j < columns / 2; j++) {
-			[matrix[i][j], matrix[i][columns - 1 - j]] = [
-				matrix[i][columns - 1 - j],
-				matrix[i][j],
-			];
-		}
-	}
+  for (let i = 0; i < rows; i++) {
+    for (let j = 0; j < columns / 2; j++) {
+      [matrix[i][j], matrix[i][columns - 1 - j]] = [
+        matrix[i][columns - 1 - j],
+        matrix[i][j],
+      ];
+    }
+  }
 };
 ```
 
@@ -610,19 +610,19 @@ int main() {
 
 ```jsx
 const merge = (intervals) => {
-	intervals.sort((a, b) => a[0] - b[0]);
-	console.log(intervals);
-	let i = 0;
-	while (i < intervals.length - 1) {
-		if (intervals[i][1] >= intervals[i + 1][0]) {
-			intervals[i + 1][1] = Math.max(intervals[i + 1][1], intervals[i][1]);
-			intervals[i + 1][0] = intervals[i][0];
-			intervals.splice(i, 1);
-		} else {
-			i += 1;
-		}
-	}
-	return intervals;
+  intervals.sort((a, b) => a[0] - b[0]);
+  console.log(intervals);
+  let i = 0;
+  while (i < intervals.length - 1) {
+    if (intervals[i][1] >= intervals[i + 1][0]) {
+      intervals[i + 1][1] = Math.max(intervals[i + 1][1], intervals[i][1]);
+      intervals[i + 1][0] = intervals[i][0];
+      intervals.splice(i, 1);
+    } else {
+      i += 1;
+    }
+  }
+  return intervals;
 };
 ```
 
@@ -684,30 +684,30 @@ The result of the merge is [1].
 
 ```jsx
 const merge = (nums1, m, nums2, n) => {
-	let gap = Math.ceil((m + n) / 2);
-	let i;
-	let j;
-	while (gap > 0) {
-		i = 0;
-		j = gap;
-		while (j < n + m) {
-			if (j < m && nums1[i] > nums1[j]) {
-				[nums1[i], nums1[j]] = [nums1[j], nums1[i]];
-			} else if (j >= m && i < m && nums1[i] > nums2[j - m]) {
-				[nums1[i], nums2[j - m]] = [nums2[j - m], nums1[i]];
-			} else if (j >= m && i >= m && nums2[i - m] > nums2[j - m]) {
-				[nums2[i - m], nums2[j - m]] = [nums2[j - m], nums2[i - m]];
-			}
-			j += 1;
-			i += 1;
-		}
-		if (gap === 1) gap = 0;
-		else gap = Math.ceil(gap / 2);
-	}
-	for (let i = 0; i < n; i++) {
-		nums1[m + i] = nums2[i];
-	}
-	return nums1;
+  let gap = Math.ceil((m + n) / 2);
+  let i;
+  let j;
+  while (gap > 0) {
+    i = 0;
+    j = gap;
+    while (j < n + m) {
+      if (j < m && nums1[i] > nums1[j]) {
+        [nums1[i], nums1[j]] = [nums1[j], nums1[i]];
+      } else if (j >= m && i < m && nums1[i] > nums2[j - m]) {
+        [nums1[i], nums2[j - m]] = [nums2[j - m], nums1[i]];
+      } else if (j >= m && i >= m && nums2[i - m] > nums2[j - m]) {
+        [nums2[i - m], nums2[j - m]] = [nums2[j - m], nums2[i - m]];
+      }
+      j += 1;
+      i += 1;
+    }
+    if (gap === 1) gap = 0;
+    else gap = Math.ceil(gap / 2);
+  }
+  for (let i = 0; i < n; i++) {
+    nums1[m + i] = nums2[i];
+  }
+  return nums1;
 };
 ```
 
@@ -759,18 +759,200 @@ Output: 3
 
 ```jsx
 const findDuplicate = (nums) => {
-	let slow = nums[0];
-	let fast = nums[0];
-	do {
-		slow = nums[slow];
-		fast = nums[nums[fast]];
-	} while (slow != fast);
+  let slow = nums[0];
+  let fast = nums[0];
+  do {
+    slow = nums[slow];
+    fast = nums[nums[fast]];
+  } while (slow != fast);
 
-	fast = nums[0];
-	while (slow != fast) {
-		slow = nums[slow];
-		fast = nums[fast];
-	}
-	return slow;
+  fast = nums[0];
+  while (slow != fast) {
+    slow = nums[slow];
+    fast = nums[fast];
+  }
+  return slow;
 };
+```
+
+#
+
+### Repeat and Missing Number Array.
+
+#### Ques: You are given a read only array of n integers from 1 to n.
+
+Each integer appears exactly once except A which appears twice and B which is missing.
+Return A and B.
+Note: Your algorithm should have a linear runtime complexity. Could you implement it without using extra memory?
+Note that in your output A should precede B.
+
+```
+Example:
+Input:[3 1 2 5 3]
+Output:[3, 4]
+A = 3, B = 4
+```
+
+#### Solution:
+
+- Using Count Sort
+  - Since the numbers are from 1 to N in the array arr[]
+  - Take a substitute array of size N+1 and initalize it with 0.
+  - Traverse the given array and increase the value of substitute[arr[i]] by one .
+  - Then again traverse the substitute array starting from index 1 to N.
+  - If you find any index value greater than 1 that is repeating element A.
+  - If you find any index value = 0 then that is the missing element B.
+  - TC: O(N)
+  - SC: O(N)
+
+```jsx
+function(A){
+  let d = {};
+  let a=-1;
+  let b=-1;
+  for(let i=1 ; i< A.length+1 ; i++)
+      d[i] = 0;
+  for(let i = 0 ; i<A.length ; i++)   {
+      d[A[i]] += 1
+  }
+  for(let i=1 ; i< A.length+1 ; i++) {
+      if(d[i] === 2)  {
+          a = i;
+      }
+      if(d[i] === 0)   {
+          b = i;
+      }
+      if(a!=-1 && b!=-1)  {
+          break;
+      }
+  }
+  return [a,b]
+}
+```
+
+- Maths (Optimized)
+  - The idea is to convert the given problem into mathematical equations. Since we have two variables where one is missing and one is repeating, can we form two linear equations and then solve for the values of these two variables using the equations?
+  - Assume the missing number to be X and the repeating one to be Y.
+  - Now since the numbers are from 1 to N in the array arr[]. Let’s calculate sum of all integers from 1 to N and sum of squares of all integers from 1 to N.
+
+```
+Sum of all elements from 1 to N:  S = N*(N+1)/2 ---- equation 1
+```
+
+```
+Sum of squares of all elements from 1 to N:  P = N(N+1)(2N+1)/6. ----- equation 2
+```
+
+- Similarly, find the sum of all elements of the array and sum of squares of all elements of the array respectively.
+
+```
+s1 = Sum of all elements of the array. —– equation 3
+P1 = Sum of squares of all elements of the array. ——– equation 4
+```
+
+- Now, if we subtract the sum of all elements of array from sum of all elements from 1 to N, that should give us the value for (X – Y).
+
+```
+(X-Y) = s – s1 = s’
+
+Similarily,
+
+X^2 – Y^2 = P – P1 = P’
+
+or, (X + Y)(X – Y) = P’
+
+or, (X + Y)*s’ = P’
+
+or, X + Y = P’/s’
+```
+
+- we have the two equations we needed:
+
+```
+(X – Y) = s’
+(X + Y) = P’/s’
+```
+
+- We can use the two equations to solve and find values for X and Y respectively.
+- Note: here s and P can be large so take long long int data type.
+- TC: O(N)
+- SC: O(1)
+
+```jsx
+function(A){
+    let n = A.length;
+    let x = 0; //missingNumber
+    let y = 0; //repeatedNumber
+    let S = n*(n+1)/2;
+    let P = n*(n+1)*(2*n + 1)/6;
+    for(let i = 0 ; i< n; i++)  {
+        S -= A[i];
+        P -= Math.pow(A[i],2);
+    }
+    x= parseInt((S + parseInt(P/S))/2);
+    y = x - S;
+    return [y,x]
+  }
+};
+```
+
+- Xor (Best Approach)
+  - Let x and y be the desired output elements.
+  - Calculate the XOR of all the array elements.
+  - xor1 = arr[0]^arr[1]^arr[2]…..arr[n-1]
+  - XOR the result with all numbers from 1 to n
+  - xor1 = xor1^1^2^…..^n
+  - xor1 will have the result as (x^y), as others would get canceled. Since we are doing XOR, we know xor of 1 and 0, is only 1, so all the set bits in xor1, means that the index bit is only set at x or y.
+  - So we can take any set bit, in code we have taken the rightmost set bit, and iterate over, and divide the numbers into two hypothetical buckets.
+  - If we check for numbers with that particular index bit set, we will get a set of numbers that belongs to the first bucket, also we will get another set of numbers belonging to the second bucket.
+  - The first bucket will be containing either x or y, similarly, the second bucket will also be containing either of x and y.
+  - XOR of all elements in the first bucket will give X or Y, and XOR of all elements of the second bucket will give either X or Y, since there will be double instances of every number in each bucket except the X or Y.
+  - We just need to iterate again to check which one is X, and which one is y. Can be simply checked by linear iterations. For better understanding, you can check the video explanation.
+  - TC: O(N)
+  - SC: O(1)
+
+```jsx
+function(A) {
+  let xor1;
+  let set_bit_no;
+  let i;
+  let x = 0; // missingNumber
+  let y = 0; // repeatedNumber
+  let n = A.length;
+
+  xor1 = A[0];
+  for(let i = 1 ; i < n ; i++)    {
+      xor1 = xor1^A[i]
+  }
+
+  for(let i = 1 ; i<n+1; i++) {
+      xor1 = xor1 ^ i
+  }
+
+  set_bit_no = xor1 & ~(xor1 - 1);
+  for(let i=0; i< n; i++) {
+      if(A[i] & set_bit_no)
+          x = x^A[i];
+      else
+          y = y^A[i];
+  }
+
+  for(let i =1 ; i<n+1; i++)  {
+      if(i&set_bit_no)
+          x = x^i
+      else
+          y = y^i
+  }
+  let x_count = 0;
+  for(let i=0 ; i< n ; i++)   {
+      if(A[i] === x)  {
+          x_count+=1;
+          break;
+      }
+  }
+  if(x_count === 0)  {
+      return [y,x];
+  }
+  return [x,y];
+}
 ```
