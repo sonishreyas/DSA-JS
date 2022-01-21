@@ -957,6 +957,8 @@ function(A) {
 }
 ```
 
+#
+
 ### Count Inversion.
 
 #### Ques: For a given integer array/list 'ARR' of size 'N', find the total number of 'Inversions' that may exist.
@@ -1055,4 +1057,130 @@ def takeInput() :
 
 A, n = takeInput()
 print(getInversions(A, n))
+```
+
+#
+
+### Search a 2D Matrix.
+
+#### Ques: Write an efficient algorithm that searches for a value in an m x n matrix. This matrix has the following properties:
+
+Integers in each row are sorted from left to right.
+The first integer of each row is greater than the last integer of the previous row.
+
+```
+Example 1:
+Input: matrix = [[1,3,5,7],[10,11,16,20],[23,30,34,60]], target = 3
+Output: true
+```
+
+```
+Example 2:
+Input: matrix = [[1,3,5,7],[10,11,16,20],[23,30,34,60]], target = 13
+Output: false
+```
+
+#### Solution:
+
+- Brute Force
+
+  - Traverse through all the elements of the array and check for target value.
+  - TC: O(m\*n)
+  - SC: O(1)
+
+- [Efficient] – Binary search
+
+  - As it is clearly mentioned that the given matrix will be row-wise and column-wise sorted, we can see that the elements in the matrix will be in a monotonically increasing order. So we can apply binary search to search the matrix. Consider the 2D matrix as a 1D matrix having indices from 0 to (m*n)-1 and apply binary search. Below the available image is the visual representation of the indices of 3*4 matrix.
+    i) Initially have a low index as the first index of the considered 1D matrix(i.e: 0) and high index as the last index of the considered 1D matrix(i.e: (m\*n)-1).
+
+  ```
+  int low = 0;
+  int  high = (m*n)-1;
+  ```
+
+  ii) Now apply binary search. Run a while loop with the condition low<=high. Get the middle index as (low+high)/2.We can get the element at middle index using matrix[middle/m][middle%m].
+
+  ```
+  while(low<=high)
+      int middle = (low+high)/2;
+  ```
+
+  iii) If the element present at the middle index is greater than the target, then it is obvious that the target element will not exist beyond the middle index. So shrink the search space by updating the high index to middle-1.
+
+  ```
+  if(matrix[middle/m][middle%m]<target)
+      high = middle-1;
+  ```
+
+  iv) If the middle index element is lesser than the target, shrink the search space by updating the low index to middle+1.
+
+  ```
+  if(matrix[middle/m][middle%m]>target)
+      low = middle+1;
+  ```
+
+  v) If the middle index element is equal to the target integer, return true.
+
+  ```
+  if(matrix[middle/m][middle%m]==target)
+      return true;
+  ```
+
+  vi) Once the loop terminates we can directly return false as we did not find the target element.
+
+```jsx
+class Solution {
+public:
+  bool searchMatrix(vector<vector<int>>& matrix, int target) {
+      int lo = 0;
+      if(!matrix.size()) return false;
+      int hi = (matrix.size() * matrix[0].size()) - 1;
+
+      while(lo <= hi) {
+          int mid = (lo + (hi - lo) / 2);
+          if(matrix[mid/matrix[0].size()][mid % matrix[0].size()] == target) {
+              return true;
+          }
+          if(matrix[mid/matrix[0].size()][mid % matrix[0].size()] < target) {
+              lo = mid + 1;
+          }
+          else {
+              hi = mid - 1;
+          }
+      }
+      return false;
+  }
+};
+```
+
+- Optimized:
+  - Traverse the array and compare all the 0th index of each row and check if target >= mat[i][0] and target < mat[i+1][0]. If yes then index = i.
+  - Now traverse that row and check for target if present return true else false.
+  - TC: O(n) + O(m)
+  - SP: O(1)
+
+```jsx
+const searchMatrix = (matrix, target) => {
+  let index = -1;
+  let m = matrix[0].length;
+  let n = matrix.length;
+  if (target < matrix[0][0] || target > matrix[n - 1][m - 1]) {
+    return false;
+  }
+  for (let i = 0; i < n - 1; i++) {
+    if (matrix[i][0] <= target && matrix[i + 1][0] > target) {
+      index = i;
+      break;
+    }
+  }
+  if (index === -1) {
+    index = n - 1;
+  }
+  for (let i = 0; i < m; i++) {
+    if (target === matrix[index][i]) {
+      return true;
+    }
+  }
+  return false;
+};
 ```
