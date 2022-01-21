@@ -956,3 +956,103 @@ function(A) {
   return [x,y];
 }
 ```
+
+### Count Inversion.
+
+#### Ques: For a given integer array/list 'ARR' of size 'N', find the total number of 'Inversions' that may exist.
+
+An inversion is defined for a pair of integers in the array/list when the following two conditions are met.
+A pair ('ARR[i]', 'ARR[j]') is said to be an inversion when:
+
+1. 'ARR[i] > 'ARR[j]'
+2. 'i' < 'j'
+   Where 'i' and 'j' denote the indices ranging from [0, 'N').
+
+```
+Sample Input 1 :
+3
+3 2 1
+Sample Output 1 :
+3
+Explanation Of Sample Output 1:
+We have a total of 3 pairs which satisfy the condition of inversion. (3, 2), (2, 1) and (3, 1).
+```
+
+```
+Sample Input 2 :
+5
+2 5 1 3 4
+Sample Output 2 :
+4
+```
+
+#### Solution:
+
+- Brute Force
+
+  - Run a nested loop and con=mpare all the elements that satisfy the condition given and it will give the count.
+  - TC: O(n^2)
+  - SC: O(1)
+
+- Optimized Approach (Merge Sort)
+  - Merge Sort is used for optimize approach.
+  - Only change is when we merge we find left[i] > right[j] then we can sat the right side element is less then all the elements on the left. so we add len(left) - 1 in the count inversion.
+  - TC: O(nlogn) ; Merge Sort algorithm
+  - SC: O(n)
+
+```jsx
+def Merge(l,r, A):
+  countInversion = 0
+  ln = len(l)
+  rn = len(r)
+  i = 0
+  j = 0
+  k = 0
+  while i<ln and j<rn:
+      if(l[i] <= r[j]):
+          A[k] = l[i]
+          k += 1
+          i += 1
+      elif(l[i] > r[j]):
+          countInversion = countInversion + ln - i
+          A[k] = r[j]
+          k += 1
+          j += 1
+  while(i < ln):
+      A[k] = l[i]
+      k += 1
+      i += 1
+  while(j < rn):
+      A[k] = r[j]
+      k += 1
+      j += 1
+  return countInversion
+
+def mergeSort(A):
+  countInversion = 0
+  n = len(A)
+  if n < 2:
+    return countInversion
+  mid = int(n/2)
+  left = []
+  right = []
+  for i in range(mid):
+      left.append(A[i])
+  for j in range(mid,n):
+      right.append(A[j])
+  countInversion+=mergeSort(left)
+  countInversion+=mergeSort(right)
+  countInversion+=Merge(left,right,A)
+  return countInversion
+
+def getInversions(A, n):
+	return mergeSort(A)
+
+def takeInput() :
+  n = int(input())
+  arr = list(map(int, input().strip().split(" ")))
+  return arr, n
+
+A, n = takeInput()
+print(getInversions(A, n))
+```
