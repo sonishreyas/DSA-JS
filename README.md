@@ -28,4 +28,5 @@
 
 | Topic                         | Problem Link                                                       | Solution                                                                                      |
 | ----------------------------- | ------------------------------------------------------------------ | --------------------------------------------------------------------------------------------- |
+| Pow(X,n)                      | <a href="https://leetcode.com/problems/powx-n">here</a>            | <a href="https://github.com/sonishreyas/DSA-JS/blob/main/Math/pow(x,n).js">here</a>           |
 | Majority Element (>N/2 times) | <a href="https://leetcode.com/problems/majority-element/">here</a> | <a href="https://github.com/sonishreyas/DSA-JS/blob/main/Math/majority-element-1.js">here</a> |
