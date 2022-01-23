@@ -23,3 +23,9 @@
 | Repeat and Missing Number                      | <a href="https://www.interviewbit.com/problems/repeat-and-missing-number-array/">here</a> | <a href="https://github.com/sonishreyas/DSA-JS/blob/main/Array/repeating-and-missing-number.js">here</a>     |
 | Inversion of Array (Pre-req: Merge Sort)       | <a href="https://www.codingninjas.com/codestudio/problems/count-inversions_615">here</a>  | <a href="https://github.com/sonishreyas/DSA-JS/blob/main/Array/count-inversion.py">here</a>                  |
 | Search in a 2d Matrix                          | <a href="https://leetcode.com/problems/search-a-2d-matrix/">here</a>                      | <a href="https://github.com/sonishreyas/DSA-JS/blob/main/Array/search-2d-matrix.js">here</a>                 |
+
+### Math
+
+| Topic                         | Problem Link                                                       | Solution                                                                                      |
+| ----------------------------- | ------------------------------------------------------------------ | --------------------------------------------------------------------------------------------- |
+| Majority Element (>N/2 times) | <a href="https://leetcode.com/problems/majority-element/">here</a> | <a href="https://github.com/sonishreyas/DSA-JS/blob/main/Math/majority-element-1.js">here</a> |
